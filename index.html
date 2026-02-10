@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>القيادة الذكية</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap');
+
+body{
+    font-family:'Cairo', Tahoma;
+    direction: rtl;
+    margin:0;
+    background:linear-gradient(to left,#eef2f7,#f9fbfd);
+}
+
+header{
+    background:linear-gradient(135deg,#1565c0,#1e88e5);
+    color:white;
+    padding:50px 20px;
+    text-align:center;
+}
+
+header h1{
+    margin:0;
+    font-size:40px;
+}
+header p{
+    font-size:18px;
+    opacity:0.9;
+}
+
+nav{
+    background:#0d47a1;
+    text-align:center;
+    padding:14px;
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+nav a{
+    color:white;
+    margin:0 12px;
+    text-decoration:none;
+    font-weight:600;
+    transition:0.3s;
+}
+nav a:hover{
+    color:#ffeb3b;
+}
+
+section{
+    background:white;
+    margin:40px auto;
+    padding:30px;
+    border-radius:15px;
+    width:85%;
+    box-shadow:0 10px 30px rgba(0,0,0,0.08);
+}
+
+h2{
+    color:#0d47a1;
+    border-right:5px solid #1e88e5;
+    padding-right:10px;
+}
+
+label{
+    font-weight:600;
+    margin-top:10px;
+    display:block;
+}
+
+input, select{
+    width:100%;
+    padding:12px;
+    margin-top:6px;
+    border-radius:8px;
+    border:1px solid #ccc;
+    font-size:14px;
+}
+
+input:focus, select:focus{
+    outline:none;
+    border-color:#1e88e5;
+    box-shadow:0 0 5px rgba(30,136,229,0.4);
+}
+
+button{
+    margin-top:15px;
+    background:linear-gradient(135deg,#1e88e5,#1565c0);
+    color:white;
+    border:none;
+    padding:14px;
+    width:100%;
+    border-radius:10px;
+    font-size:16px;
+    cursor:pointer;
+    transition:0.3s;
+}
+button:hover{
+    transform:translateY(-2px);
+    box-shadow:0 6px 15px rgba(0,0,0,0.2);
+}
+
+.result{
+    margin-top:20px;
+    padding:20px;
+    background:#e3f2fd;
+    border-radius:10px;
+    border-right:6px solid #1e88e5;
+}
+
+.analysis{
+    background:#f1f8e9;
+    padding:12px;
+    margin-top:12px;
+    border-radius:8px;
+    font-size:14px;
+}
+
+footer{
+    background:#0d47a1;
+    color:white;
+    text-align:center;
+    padding:20px;
+    margin-top:40px;
+}
+
+footer p{
+    margin:0;
+    opacity:0.85;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>القيادة الذكية</h1>
+    <p>نظام ذكي لدعم اتخاذ القرارات الإدارية في المدرسة باستخدام الذكاء الاصطناعي</p>
+</header>
+
+<nav>
+    <a href="#about">نبذه عن الموقع</a>
+    <a href="#roles">توزيع الأدوار</a>
+    <a href="#problems">حل المشكلات</a>
+    <a href="#planning">التخطيط</a>
+    <a href="https://moe.gov.sa/ar/aboutus/sectors/hr/Pages/announcements.aspx" target="_blank">تعاميم وزارة التعليم</a>
+</nav>
+
+<section id="about">
+<h2>نبذه عن الموقع</h2>
+<p>
+يوفر موقع <strong>القيادة الذكية</strong> بيئة رقمية تساعد قادة المدرسة
+في اتخاذ قرارات إدارية مبنية على تحليل متعدد المعايير، بما يحاكي
+آلية عمل أنظمة الذكاء الاصطناعي الحديثة، مع ضمان التوافق مع
+التعاميم الرسمية لوزارة التعليم.
+</p>
+</section>
+
+<section id="roles">
+<h2> توزيع الأدوار  </h2>
+
+<label>عدد الأفراد المتاحين</label>
+<input type="number" id="people">
+
+<label>مستوى الخبرة (1 - 5)</label>
+<input type="number" id="experience">
+
+<label>الكفاءة التقنية (1 - 5)</label>
+<input type="number" id="skill">
+
+<label>الالتزام الوظيفي (1 - 5)</label>
+<input type="number" id="commitment">
+
+<label>عبء العمل الحالي (1 - 5)</label>
+<input type="number" id="workload">
+
+<label>أهمية المهمة (1 - 5)</label>
+<input type="number" id="importance">
+
+<label>الوقت المتاح (بالأيام)</label>
+<input type="number" id="time">
+
+<button onclick="roleDecision()">اتخاذ قرار ذكي</button>
+<div id="roleResult" class="result"></div>
+</section>
+
+<section id="problems">
+<h2> حل المشكلات الإدارية</h2>
+
+<label>نوع المشكلة</label>
+<select id="problemType">
+<option>تنظيمية</option>
+<option>بشرية</option>
+<option>مالية</option>
+<option>أكاديمية</option>
+</select>
+
+<label>حجم التأثير (1 - 5)</label>
+<input type="number" id="impact">
+
+<label>عدد المتأثرين</label>
+<input type="number" id="affected">
+
+<label>درجة الاستعجال (1 - 5)</label>
+<input type="number" id="urgency">
+
+<label>تعقيد المشكلة (1 - 5)</label>
+<input type="number" id="complexity">
+
+<label>توفر الموارد (1 - 5)</label>
+<input type="number" id="resources">
+
+<button onclick="problemDecision()">تحليل واتخاذ قرار</button>
+<div id="problemResult" class="result"></div>
+</section>
+
+<section id="planning">
+<h2> التخطيط الذكي</h2>
+
+<label>أولوية الهدف (1 - 5)</label>
+<input type="number" id="priority">
+
+<label>مدى توافق الخطة مع رؤية المدرسة (1 - 5)</label>
+<input type="number" id="vision">
+
+<label>مدة التنفيذ (1 قصيرة - 5 طويلة)</label>
+<input type="number" id="duration">
+
+<label>درجة المخاطر (1 - 5)</label>
+<input type="number" id="risk">
+
+<label>جاهزية الفريق (1 - 5)</label>
+<input type="number" id="teamReady">
+
+<label>توفر الموارد (1 - 5)</label>
+<input type="number" id="planResources">
+
+<button onclick="planningDecision()">إنشاء خطة ذكية</button>
+<div id="planResult" class="result"></div>
+</section>
+
+<footer>
+<p>مشروع تعليمي – القيادة الذكية | © 2026</p>
+</footer>
+
+<script>
+/* 🔹 المنطق كما هو بدون أي تعديل */
+function roleDecision(){
+let score=(experience.value*2)+(skill.value*2)+(commitment.value*1.5)+(importance.value*2)+(time.value*0.5)-(workload.value*1.5);
+let decision,analysis;
+if(score>=35){decision="إسناد المهمة لقائد أساسي مع فريق عالي الكفاءة.";analysis="تشير البيانات إلى توفر خبرة عالية والتزام قوي.";}
+else if(score>=25){decision="توزيع المهمة على فريق متوسط مع إشراف إداري.";analysis="القدرات متوازنة ولكن تحتاج متابعة.";}
+else{decision="تقسيم المهمة وإعادة جدولة التنفيذ.";analysis="ارتفاع العبء أو نقص الجاهزية.";}
+roleResult.innerHTML="<strong>القرار:</strong> "+decision+"<div class='analysis'>"+analysis+"</div>";
+}
+
+function problemDecision(){
+let score=(impact.value*2)+(urgency.value*2)+(complexity.value*1.5)+(affected.value*0.5)-(resources.value);
+let decision=score>=30?"تدخل إداري فوري وربط القرار بالتعاميم.":score>=20?"تشكيل لجنة مختصة.":"معالجة تدريجية داخلية.";
+problemResult.innerHTML="<strong>القرار:</strong> "+decision;
+}
+
+function planningDecision(){
+let score=(priority.value*2)+(vision.value*2)+(teamReady.value*1.5)+(planResources.value)-(risk.value*2)-(duration.value);
+let plan=score>=30?"خطة استراتيجية شاملة طويلة المدى.":score>=20?"خطة تشغيلية مرنة.":"خطة قصيرة المدى.";
+planResult.innerHTML="<strong>الخطة:</strong> "+plan;
+}
+</script>
+
+</body>
+</html>
